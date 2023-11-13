@@ -7,7 +7,7 @@ o	aismarttask2023-password
 •	Now, open the google cloud console with this account.
 •	There go to API & Services and then go to 0Auth Consent screen. Here, make sure to add the test users so that they can access the application.
 •	Go to credentials and if none exists create a 0Auth2.0Client ID.
-•	Next, download the 0Auth credentials file (already exists) into the directory where the code is present with the name ‘credentials.json’
+•	Next, download the 0Auth credentials file (already exists) into the directory where the code is present with the name ‘credentials.json’.
 •	Make sure to add the ‘http://localhost:8501’ in the Authorized JavaScript origins and ‘http://localhost:8080/’ in the  Authorized redirect URL’s.
 •	The first URL is the streamlit application running port and the second link is the port number used in the following code: 
 •	creds = flow.run_local_server(port=8080)
