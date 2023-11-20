@@ -28,32 +28,28 @@ This document provides detailed instructions for setting up and running a Stream
 
 ## Google Account Login
 
-1. **Login Credentials:**
-   - Email: aismarttask@gmail.com
-   - Password:----------------
-
-2. **Access Google Cloud Console:**
+1. **Access Google Cloud Console:**
    - Navigate to [Google Cloud Console](https://console.cloud.google.com/) and login with the above credentials.
 
-3. **Configure OAuth Consent Screen:**
+2. **Configure OAuth Consent Screen:**
    - Go to **API & Services > OAuth Consent Screen**.
    - Add test users to allow them access to the application.
 
-4. **Manage OAuth 2.0 Client ID:**
+3. **Manage OAuth 2.0 Client ID:**
    - Go to **Credentials**.
    - If a Client ID doesn't exist, create an OAuth 2.0 Client ID.
    - Download the OAuth credentials file into the directory with your code, named `credentials.json`.
 
-5. **Set Authorized URLs:**
+4. **Set Authorized URLs:**
    - Add `http://localhost:8501` to Authorized JavaScript origins.
    - Add `http://localhost:8080/` to Authorized redirect URLs.
    - Note: Adjust the URLs based on your port numbers. The first URL is the application running URL, and the second URL is the redirection URL.
 
-6. **Configure Google Calendar Authentication:**
+5. **Configure Google Calendar Authentication:**
    - The code `creds = flow.run_local_server(port=8080)` is used in `google_calender_authenticate()` function.
    - Ensure the port numbers match with the Authorized redirect URLs.
 
-7. **Email Setup:**
+6. **Email Setup:**
    - 2-step verification is already set up.
    - Change the mobile number and recovery email.
    - Create an app password to be used as the sender's password.
