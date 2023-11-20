@@ -12,7 +12,6 @@ from datetime import datetime, time
 import autogen
 from dateutil import parser
 from datetime import datetime
-import calendar
 import re
 
 # Set up your OpenAI API key
@@ -29,12 +28,11 @@ task_conversation.append(system_message)
 priority = 'medium'
 remainder_days = 1
 
-
 #coder uisng Microsoft's AutoGPT framework
 def code(user_input):
     config_list=[{
     'model': 'gpt-4',
-    'api_key': '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'
+    'api_key': openai_api_key
     }]
     general_llm_config={
     'request_timeout':600,
@@ -58,13 +56,14 @@ def code(user_input):
     is_termination_msg=lambda x: x.get("content", "").rstrip().endswith("TERMINATE"),
     code_execution_config={
         "work_dir": "coding",
-        "use_docker": False,  # set to True or image name like "python:3" to use docker
+        "use_docker": False
     },
     )
 # the assistant receives a message from the user_proxy, which contains the task description
     user_proxy.initiate_chat(
     assistant,
     message=user_input,
+    clear_history=False
     )
     first_key = next(iter(user_proxy.chat_messages))
     values_of_first_key = user_proxy.chat_messages[first_key]
@@ -207,10 +206,12 @@ def manage_tasks():
         pending_tasks = sorted(updated_tasks, key=lambda x: datetime.fromisoformat(x["deadline"]).date())
         st.write("Upcoming Tasks:")
         st.table(pending_tasks)
+        st.session_state.task_plan_active = True
         
 def coder():
     st.subheader("Code Agent")
     code_input = st.text_area("Enter code-related query:")
+    # Trigger the code function without resetting the session state
     if st.button("Get Code Help"):
         code(code_input)
 
@@ -218,21 +219,31 @@ def coder():
 def main():
     st.header("Welcome to AISmartTask Management System")
     col1, col2 = st.columns(2)
-    with col1: # for task amnagement system
+    with col1:
         if st.button("Manage Task"):
-            st.session_state['manage_tasks'] = True
-            st.session_state['code'] = False
-    with col2: # for coder system
+            st.session_state.manage_tasks = True
+            st.session_state.task_plan_active = True
+            st.session_state.code_active = False
+    with col2:
         if st.button("Code Agent"):
-            st.session_state['code'] = True
-            st.session_state['manage_tasks'] = False
+            st.session_state.code_active = True
+            st.session_state.manage_tasks = False
+            st.session_state.task_plan_active = False
 
-    if st.session_state.get('manage_tasks', False):
+    if st.session_state.get('manage_tasks', False) and st.session_state.get('task_plan_active', False):
         manage_tasks()
-
-    if st.session_state.get('code', False):
+    if st.session_state.get('code_active', False):
         coder()
+
+# Initialize the session state variables
+if 'manage_tasks' not in st.session_state:
+    st.session_state.manage_tasks = False
+
+if 'task_plan_active' not in st.session_state:
+    st.session_state.task_plan_active = False
+
+if 'code_active' not in st.session_state:
+    st.session_state.code_active = False
 
 if __name__ == "__main__":
     main()
-
