@@ -30,7 +30,7 @@ This document provides detailed instructions for setting up and running a Stream
 
 1. **Login Credentials:**
    - Email: aismarttask@gmail.com
-   - Password: aismarttask2023
+   - Password:----------------
 
 2. **Access Google Cloud Console:**
    - Navigate to [Google Cloud Console](https://console.cloud.google.com/) and login with the above credentials.
