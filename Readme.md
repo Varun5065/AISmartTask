@@ -70,5 +70,5 @@ This document provides detailed instructions for setting up and running a Stream
 
 - For Google Calendar: [Tutorial Video](https://youtu.be/B2E82UPUnOY?si=vrKmuRT8WE1qmyva)
 - For Gmail Setup: [Tutorial Video](https://youtu.be/hXiPshHn9Pw?si=m7yz4FvJBRRbrD9F)
-- Demo-1 (Setting Up): [Tutorial Video](https://drive.google.com/file/d/1fuTET-B2Ow3UZGuHTBIPtsU7OmG7x5gW/view?usp=sharing) (until 3:20)
-- Demo-2 (Working): [Tutorial Video](https://drive.google.com/file/d/1kTOJnVYaSjZzT5uCuOi2bZphp-ukvRvt/view?usp=sharing)
+- Demo-1 (Setting Up): [Tutorial Video](https://drive.google.com/file/d/1owg3PHNISUI-poDhJFn76D4X98yHOvFr/view?usp=sharing) (until 3:20)
+- Demo-2 (Working): [Tutorial Video](https://drive.google.com/file/d/1oNJbhG681nk8AxJuxUBFGfdO3ms3o5OS/view?usp=sharing)
